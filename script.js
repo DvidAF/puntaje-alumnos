@@ -42,7 +42,6 @@ function render(data) {
   const semanas = data.semanas || [];
   const fecha = new Date(data.consultado || Date.now());
 
-  $('avatar').textContent = iniciales(data.alumno);
   $('fAlumno').textContent = data.alumno;
   $('fCi').textContent = data.ci || (credenciales && credenciales.ci) || '';
   $('fFecha').textContent = fecha.toLocaleDateString('es-PY', { day: '2-digit', month: 'long', year: 'numeric' }) +
