@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#034EA2">
-<title>Portal de Calificaciones · Programación IV</title>
+<title>Participación semanal · Programación IV</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Condensed:wght@500;700&display=swap" rel="stylesheet">
@@ -13,6 +13,7 @@
 <script src="script.js" defer></script>
 </head>
 <body>
+
 <section class="hero">
   <div class="hero-in">
     <span class="chip" id="chipEval">Segundo Parcial</span>
@@ -22,99 +23,53 @@
 </section>
 
 <main>
-  <section id="vistaLogin" class="card ingreso">
-    <div class="info">
-      <div class="linea-am"></div>
-      <h2>La participación semanal es la nota del <span id="infoEval">Segundo Parcial</span></h2>
-      <p>La asignatura se desarrolla con <strong>una clase por semana</strong>. En cada clase se evalúa la participación del alumno con el puntaje asignado a esa semana.</p>
-      <p>La <strong>suma de los puntajes semanales</strong> constituye la calificación final del parcial.</p>
-      <ul class="pasos">
-        <li><span class="n">1</span><span>Ingrese con su cédula de identidad y el PIN entregado por el docente.</span></li>
-        <li><span class="n">2</span><span>Consulte el puntaje obtenido en cada semana de clase.</span></li>
-        <li><span class="n">3</span><span>Siga el avance acumulado de su nota a lo largo del parcial.</span></li>
-      </ul>
+  <div class="card aviso">
+    <div class="ico">i</div>
+    <div>
+      <h2>La participación semanal es parte de la nota del <span id="avisoEval">Examen final</span></h2>
+      <p>El puntaje del examen final se basa en las tareas y participación en clase, la nota de estas tareas constituye una parte de la calificación del examen final.</p>
     </div>
-    <div class="form-box">
-      <div id="demoBanner" class="demo hidden">
-        <b>Modo demostración:</b> la página aún no está conectada a la planilla. Ingrese cualquier dato para ver un ejemplo.
-      </div>
-      <h3>Consulta de calificaciones</h3>
-      <p class="sub">Acceso exclusivo para alumnos de la cátedra.</p>
-      <form id="formLogin" autocomplete="on">
-        <label for="ci">Cédula de identidad</label>
-        <input id="ci" name="ci" inputmode="numeric" autocomplete="username" required placeholder="Ej.: 1234567">
-        <label for="pin">PIN de acceso</label>
-        <input id="pin" name="pin" class="pin" type="password" inputmode="numeric" autocomplete="current-password" required placeholder="••••">
-        <button id="btnIngresar" class="btn-am" type="submit">Consultar mis notas</button>
-        <div id="error" class="error" role="alert"></div>
-      </form>
-      <p class="priv">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-        La información es personal: cada alumno accede únicamente a sus propias calificaciones.
-      </p>
-    </div>
-  </section>
+  </div>
 
-  <section id="vistaNotas" class="hidden">
-    <div class="card ficha">
-      <div class="alumno">
-        <div>
-          <div class="nom" id="fAlumno"></div>
-          <div class="det">C.I. <b id="fCi"></b> · Consultado el <b id="fFecha"></b></div>
-        </div>
-      </div>
-      <div class="acciones">
-        <button class="btn-out" id="btnActualizar" type="button">Actualizar</button>
-        <button class="btn-out" id="btnSalir" type="button">Cerrar sesión</button>
-      </div>
-    </div>
+  <div id="demoBanner" class="demo hidden"><b>Modo demostración:</b> la página aún no está conectada a la planilla; se muestran datos de ejemplo.</div>
 
-    <div class="resumen">
-      <div class="card dato principal">
-        <div class="k" id="kNota">Nota del Segundo Parcial</div>
-        <div class="v" id="rNota"></div>
-        <div class="d" id="rNotaDet"></div>
-      </div>
-      <div class="card dato">
-        <div class="k">Semanas evaluadas</div>
-        <div class="v" id="rSemanas"></div>
-        <div class="d">clases con puntaje registrado</div>
-      </div>
-      <div class="card dato">
-        <div class="k">Rendimiento</div>
-        <div class="v" id="rPct"></div>
-        <div class="d">sobre las semanas evaluadas</div>
-      </div>
+  <div class="barra-h">
+    <label class="buscar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <input id="buscar" type="search" placeholder="Buscar alumno por nombre…" autocomplete="off" aria-label="Buscar alumno">
+    </label>
+    <div class="leyenda">
+      <span><i class="m ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i> Logrado</span>
+      <span><i class="m no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></i> No logrado</span>
+      <span><i class="m pend">–</i> Pendiente</span>
     </div>
+  </div>
 
-    <div class="card avance">
-      <div class="fila"><span>Avance acumulado sobre el puntaje total del parcial</span><b id="avanceTxt"></b></div>
-      <div class="barra"><span id="avanceBar"></span></div>
-    </div>
-
-    <div class="titulo-sec">
-      <h2>Participación semanal</h2>
-      <p>Una clase por semana · detalle del puntaje obtenido</p>
-    </div>
-    <div class="card" style="overflow:hidden">
+  <div class="card">
+    <div id="estado" class="estado-carga"><div class="spinner"></div>Cargando listado…</div>
+    <div class="tabla-wrap hidden" id="tablaWrap">
       <table>
-        <thead>
-          <tr><th>Semana</th><th>Fecha</th><th>Tema de la clase</th><th class="r">Puntaje</th></tr>
-        </thead>
+        <thead><tr id="thead"></tr></thead>
         <tbody id="tbody"></tbody>
-        <tfoot>
-          <tr><td id="tLabel">Nota del parcial</td><td class="vacio"></td><td class="vacio"></td><td class="pts" id="tTotal"></td></tr>
-        </tfoot>
       </table>
     </div>
-  </section>
+  </div>
+  <div class="pie-tabla">
+    <span id="conteo"></span>
+    <span id="actualizado"></span>
+  </div>
 </main>
+
+<div class="tip" id="tip"></div>
 
 <footer>
   <div class="pie-borde"></div>
   <div class="pie-in">
     <span id="pieIzq"></span>
+    
   </div>
 </footer>
+
+<script src="app.js"></script>
 </body>
 </html>
